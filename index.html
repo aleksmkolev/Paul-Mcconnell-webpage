@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Paul McConnell — Portfolio</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+	<style>
+html, body { margin:0; padding:0; }
+body { background:#ffffff; color:#111111; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height:1.6; }
+
+/* Layout */
+.page { display:flex; min-height:100vh; }
+.sidebar { position:fixed; left:0; top:0; bottom:0; width:220px; padding:32px 24px; border-right:1px solid #eaeaea; background:#fff; }
+.content { margin-left:220px; width:calc(100% - 220px); }
+
+/* Name on left */
+.brand { font-family: "Playfair Display", Georgia, serif; font-weight:500; font-size:20px; letter-spacing:0.3px; }
+.brand small { display:block; margin-top:4px; font-family: Inter, sans-serif; font-weight:300; color:#666; letter-spacing:0.2px; }
+
+/* Invisible navbar that appears on scroll */
+.topnav { position:fixed; top:0; left:220px; right:0; height:56px; display:flex; align-items:center; justify-content:flex-end; padding:0 32px; background:rgba(255,255,255,0.0); border-bottom:1px solid rgba(234,234,234,0.0); transition: background 240ms ease, border-color 240ms ease; z-index:10; }
+.topnav.visible { background:rgba(255,255,255,0.9); border-bottom-color:#eaeaea; backdrop-filter:saturate(180%) blur(8px); }
+.nav a { color:#111; text-decoration:none; margin-left:24px; font-size:14px; letter-spacing:0.06em; text-transform:uppercase; }
+.nav a:hover { text-decoration:underline; }
+
+/* Sections */
+section { padding:88px 56px; border-bottom:1px solid #f2f2f2; }
+.hero { padding-top:120px; padding-bottom:64px; }
+.hero h1 { font-family:"Playfair Display", Georgia, serif; font-weight:500; line-height:1.2; color:#111; font-size:44px; margin:0 0 16px 0; }
+.hero p.kicker { color:#666; margin:0 0 24px 0; font-size:14px; letter-spacing:0.06em; text-transform:uppercase; }
+.hero .synopsis { max-width:860px; color:#222; font-size:16px; }
+
+/* Placeholder grid */
+.grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:24px; max-width:1100px; }
+.col-7 { grid-column: span 7; }
+.col-5 { grid-column: span 5; }
+.placeholder { background:#fafafa; border:1px solid #eaeaea; height:280px; display:flex; align-items:center; justify-content:center; color:#999; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; }
+
+/* Footer */
+footer { padding:48px 56px; color:#777; font-size:14px; }
+
+/* Responsive */
+@media (max-width: 920px) {
+	.sidebar { position:static; width:auto; height:auto; border-right:none; border-bottom:1px solid #eaeaea; }
+	.topnav { left:0; }
+	.content { margin-left:0; }
+	.grid { grid-template-columns: 1fr; }
+	.col-7, .col-5 { grid-column: auto; }
+}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<aside class="sidebar">
+			<div class="brand">Paul McConnell<small>CEO • Consultant</small></div>
+		</aside>
+		<header class="topnav" id="topnav">
+			<nav class="nav">
+				<a href="#about">About</a>
+				<a href="work.html">Work</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
+		<main class="content">
+			<section class="hero" id="about">
+				<p class="kicker">Portfolio of Selected Projects from Paul’s CV</p>
+				<h1>Paul McConnell</h1>
+				<div class="synopsis">
+					<p><strong>Overall Synopsis of Paul’s 43 years in the Development &amp; Construction Industry</strong></p>
+					<p>Paul McConnell is currently acting in an advisory capacity as CEO for a Saudi real estate/developer based in Riyadh, prior to this he was a C-Suite Executive COO for Saudi PIF responsible for overseeing large scale portfolio developments. Paul has over four decades of experience with a strong financial accruement in the field of Feasibility/Master Planning/Development/Design/Construction and Fast Track Delivery of high profile iconic International Resorts. Paul has spent twenty six years of his career working in the Middle East on some of the largest and most iconic projects in the world at CEO/ C-Suite COO/ Senior Director and General Manager level. Paul has worked very closely with high profile personalities inclusive of Mr Donald Trump, The Al Thani family, The Maktoum family and various government entities worldwide such as FIFA. Paul has worked as a Developer, a Consultant in Project Management and as a Main International Contractor delivering some of the most prestigious fast track projects in the world. Holding the position of Senior Director on the iconic Katara Towers (5 and 6 Star International Hotels) representing the flagship for the FIFA World Cup 2022 in Qatar. Paul held the position of Senior Director for the main developer of the iconic International Resort Palm Island Dubai, overseeing the developments of the main iconic towers international resorts, being responsible for projects exceeding in value of 2 Billion USD. Paul has managed and delivered Iconic High-Rise Towers, Major Retail Developments, 5 and 6 Star International Hotels, Mixed Use High End Residential Development, Gated Communities, International Airports, Grade A Offices, Hospitals, Schools, Stadiums, Equestrian and 4 Major International Golf Courses. All projects inclusive of associated infrastructure. Paul has worked for high profile companies at senior level inclusive of PIF, Katara Hospitality, Emaar, Nakheel, Al Futtaim, Mace, Arabtec Construction.</p>
+				</div>
+			</section>
+			<section>
+				<div class="grid">
+					<div class="col-7"><div class="placeholder">Image Placeholder</div></div>
+					<div class="col-5">
+						<h3 style="margin-top:0; font-weight:500; font-family: 'Playfair Display', Georgia, serif;">Selected Projects</h3>
+						<ul style="list-style:none; padding:0; margin:0;">
+							<li style="padding:12px 0; border-bottom:1px solid #efefef;">Project Title Placeholder — Location</li>
+							<li style="padding:12px 0; border-bottom:1px solid #efefef;">Project Title Placeholder — Location</li>
+							<li style="padding:12px 0;">Project Title Placeholder — Location</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section id="contact">
+				<h3 style="margin-top:0; font-weight:500; font-family: 'Playfair Display', Georgia, serif;">Contact</h3>
+				<p>Email: <span style="border-bottom:1px solid #ddd;">email.placeholder@domain.com</span></p>
+				<p>LinkedIn: <span style="border-bottom:1px solid #ddd;">linkedin.com/in/placeholder</span></p>
+			</section>
+			<footer>
+				<p>© <span id="year"></span> Paul McConnell. All rights reserved.</p>
+			</footer>
+		</main>
+	</div>
+
+	<script>
+// Reveal nav on scroll
+const topnav = document.getElementById('topnav');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+	const y = window.scrollY || document.documentElement.scrollTop;
+	if (y > 40) { topnav.classList.add('visible'); } else { topnav.classList.remove('visible'); }
+	lastY = y;
+});
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
