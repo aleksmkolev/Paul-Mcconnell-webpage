@@ -7,59 +7,11 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
 	<script type="importmap">{ "imports": {
 		"react": "https://esm.sh/react",
 		"react-dom": "https://esm.sh/react-dom/client"
 	}}</script>
-	<style>
-html, body { margin:0; padding:0; }
-body { background:#ffffff; color:#111111; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height:1.6; }
-
-.page { display:flex; min-height:100vh; }
-.sidebar { position:fixed; left:0; top:0; bottom:0; width:220px; padding:32px 24px; border-right:1px solid #eaeaea; background:#fff; }
-.content { margin-left:220px; width:calc(100% - 220px); }
-
-.brand { font-family: "Playfair Display", Georgia, serif; font-weight:500; font-size:20px; letter-spacing:0.3px; }
-.brand small { display:block; margin-top:4px; font-family: Inter, sans-serif; font-weight:300; color:#666; letter-spacing:0.2px; }
-
-.topnav { position:fixed; top:0; left:220px; right:0; height:56px; display:flex; align-items:center; justify-content:flex-end; padding:0 32px; background:rgba(255,255,255,0.9); border-bottom:1px solid #eaeaea; z-index:10; backdrop-filter:saturate(180%) blur(8px); }
-.nav a { color:#111; text-decoration:none; margin-left:24px; font-size:14px; letter-spacing:0.06em; text-transform:uppercase; }
-.nav a:hover { text-decoration:underline; }
-
-section { padding:88px 56px; border-bottom:1px solid #f2f2f2; }
-.hero { padding-top:120px; padding-bottom:24px; }
-.hero h1 { font-family:"Playfair Display", Georgia, serif; font-weight:500; line-height:1.2; color:#111; font-size:40px; margin:0 0 8px 0; }
-.hero p { color:#666; margin:0; }
-
-.globe-wrap { position:relative; display:flex; gap:24px; }
-.globe-viz { position:relative; flex:0 0 calc(60% - 30px); height:550px; background:#fff; border:none; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-.globe-viz canvas { width:100% !important; height:100% !important; object-fit:contain; }
-.globe-side { width:240px; flex:0 0 240px; }
-.globe-side h3 { margin:0 0 12px 0; font-family:"Playfair Display", Georgia, serif; font-weight:500; }
-.globe-menu { list-style:none; padding:0; margin:0; border-top:1px solid #efefef; }
-.globe-menu li { border-bottom:1px solid #efefef; }
-.globe-menu a { display:block; padding:14px 0; text-decoration:none; color:#111; letter-spacing:0.04em; text-transform:uppercase; font-size:13px; }
-.globe-menu a:hover { text-decoration:underline; }
-.globe-menu a.active { color:#1a73e8; text-decoration:underline; }
-
-
-.timeline { max-width:1100px; }
-.item { padding:24px 0; border-bottom:1px solid #efefef; display:grid; grid-template-columns: 220px 1fr; gap:24px; }
-.item:last-child { border-bottom:none; }
-.item .when { color:#666; font-size:14px; }
-.item .where { font-weight:500; }
-.item .role { color:#333; }
-.item .desc { color:#222; margin-top:8px; }
-
-@media (max-width: 920px) {
-	.sidebar { position:static; width:auto; height:auto; border-right:none; border-bottom:1px solid #eaeaea; }
-	.topnav { left:0; }
-	.content { margin-left:0; }
-	.globe-wrap { flex-direction:column; }
-	.globe-side { width:auto; }
-	.item { grid-template-columns: 1fr; }
-}
-	</style>
 </head>
 <body>
 	<div class="page">
@@ -70,23 +22,29 @@ section { padding:88px 56px; border-bottom:1px solid #f2f2f2; }
 			<nav class="nav">
 				<a href="index.html#about">About</a>
 				<a href="work.html">Work</a>
-				<a href="index.html#contact">Contact</a>
+				<a href="contact.html">Contact</a>
+				<a href="Paul McConnell Portfolio 1-9-2025 3.pdf" target="_blank">RESUMÉ</a>
 			</nav>
 		</header>
 		<main class="content">
-			<section class="hero">
+			<section class="work-hero">
 				<h1>Work Experience</h1>
 				<p>Detailed chronology and selected roles. All content uses placeholders.</p>
 			</section>
 			<section style="background:#fff;">
 				<div class="globe-wrap">
-					<div class="globe-viz" id="globeViz"></div>
+					<div class="globe-viz" id="globeViz">
+						<div class="globe-spinner" id="globeSpinner">
+							<div class="spinner"></div>
+							<p>Loading globe...</p>
+						</div>
+					</div>
 					<aside class="globe-side">
 						<h3>Locations</h3>
 						<ul class="globe-menu" id="globeMenu">
-							<li><a href="#" data-target="london">London</a></li>
-							<li><a href="#" data-target="morocco">Morocco</a></li>
-							<li><a href="#" data-target="dubai">Dubai</a></li>
+							<li><a href="#" data-target="london">London - Broadgate Development  Construction Manager for Gleesons</a></li>
+							<li><a href="#" data-target="morocco">Morocco - La Marina Resort Construction Manager for EMAAR</a></li>
+							<li><a href="#" data-target="dubai">Dubai - Senior Project Director For Palm Jumeirah Overseeing the Donald Trump Towe</a></li>
 						</ul>
 					</aside>
 				</div>
@@ -124,167 +82,175 @@ section { padding:88px 56px; border-bottom:1px solid #f2f2f2; }
 			</footer>
 		</main>
 	</div>
-	<script>
-document.getElementById('year').textContent = new Date().getFullYear();
+	<script src="js/main.js"></script>
+	<script src="//unpkg.com/@babel/standalone"></script>
+	<script type="text/jsx" data-type="module">
+	  import Globe from 'https://esm.sh/react-globe.gl?external=react';
+	  import React, { useState, useEffect } from 'react';
+	  import { createRoot } from 'react-dom';
+	  import { MeshLambertMaterial, DoubleSide } from 'https://esm.sh/three';
+	  import * as topojson from 'https://esm.sh/topojson-client';
+
+	  const polygonsMaterial = new MeshLambertMaterial({ color: 'darkslategrey', side: DoubleSide });
+
+	  const cityMarkers = [
+	    { id: 'morocco', name: 'Morocco', lat: 31.6300, lng: -8.0089 },
+	    { id: 'london', name: 'London', lat: 51.5074, lng: -0.1278 },
+	    { id: 'dubai', name: 'Dubai', lat: 25.2048, lng: 55.2708 }
+	  ];
+
+	  const World = () => {
+	    const [landPolygons, setLandPolygons] = useState([]);
+	    const [selectedCity, setSelectedCity] = useState(null);
+
+	    useEffect(() => {
+	      // load data
+	      fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
+	        .then(landTopo => {
+	          setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
+	        });
+	    }, []);
+
+	    // Add menu click handlers
+	    useEffect(() => {
+	      const menuItems = document.querySelectorAll('#globeMenu a');
+	      menuItems.forEach(item => {
+	        item.addEventListener('click', (e) => {
+	          e.preventDefault();
+	          const cityId = item.dataset.target;
+	          setSelectedCity(cityId);
+	          
+	          // Update menu active state
+	          menuItems.forEach(mi => mi.classList.remove('active'));
+	          item.classList.add('active');
+	        });
+	      });
+	    }, []);
+
+	    return <Globe
+	      backgroundColor="rgba(0,0,0,0)"
+	      showGlobe={false}
+	      showAtmosphere={false}
+	      polygonsData={landPolygons}
+	      polygonCapMaterial={polygonsMaterial}
+	      polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
+	      htmlElementsData={cityMarkers}
+	      htmlAltitude={() => 0.02}
+	      htmlElement={(d) => {
+	        const container = document.createElement('div');
+	        container.style.position = 'relative';
+	        container.style.display = 'inline-block';
+	        
+	        const marker = document.createElement('div');
+	        marker.style.width = selectedCity === d.id ? '20px' : '12px';
+	        marker.style.height = selectedCity === d.id ? '20px' : '12px';
+	        marker.style.borderRadius = '50%';
+	        marker.style.backgroundColor = selectedCity === d.id ? '#ff0000' : '#000';
+	        marker.style.border = '2px solid #fff';
+	        marker.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+	        marker.style.pointerEvents = 'auto';
+	        marker.style.transition = 'all 0.3s ease';
+	        marker.style.cursor = 'pointer';
+	        marker.title = `${d.name} (${d.lat.toFixed(2)}, ${d.lng.toFixed(2)})`;
+	        
+	        // Popup window
+	        const popup = document.createElement('div');
+	        popup.style.position = 'absolute';
+	        popup.style.bottom = '30px';
+	        popup.style.left = '50%';
+	        popup.style.transform = 'translateX(-50%)';
+	        popup.style.width = '200px';
+	        popup.style.backgroundColor = '#fff';
+	        popup.style.border = '1px solid #eaeaea';
+	        popup.style.borderRadius = '8px';
+	        popup.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
+	        popup.style.padding = '12px';
+	        popup.style.display = selectedCity === d.id ? 'block' : 'none';
+	        popup.style.transition = 'all 0.3s ease';
+	        popup.style.zIndex = '9999';
+	        
+	        // Close button
+	        const closeBtn = document.createElement('button');
+	        closeBtn.innerHTML = '×';
+	        closeBtn.style.position = 'absolute';
+	        closeBtn.style.top = '8px';
+	        closeBtn.style.right = '8px';
+	        closeBtn.style.width = '20px';
+	        closeBtn.style.height = '20px';
+	        closeBtn.style.border = 'none';
+	        closeBtn.style.borderRadius = '50%';
+	        closeBtn.style.backgroundColor = '#f5f5f5';
+	        closeBtn.style.color = '#666';
+	        closeBtn.style.fontSize = '14px';
+	        closeBtn.style.fontWeight = 'bold';
+	        closeBtn.style.cursor = 'pointer';
+	        closeBtn.style.display = 'flex';
+	        closeBtn.style.alignItems = 'center';
+	        closeBtn.style.justifyContent = 'center';
+	        closeBtn.style.transition = 'all 0.2s ease';
+	        closeBtn.onmouseover = () => {
+	          closeBtn.style.backgroundColor = '#e0e0e0';
+	          closeBtn.style.color = '#333';
+	        };
+	        closeBtn.onmouseout = () => {
+	          closeBtn.style.backgroundColor = '#f5f5f5';
+	          closeBtn.style.color = '#666';
+	        };
+	        closeBtn.onclick = (e) => {
+	          e.stopPropagation();
+	          setSelectedCity(null);
+	          popup.style.display = 'none';
+	          const menuItems = document.querySelectorAll('#globeMenu a');
+	          menuItems.forEach(mi => mi.classList.remove('active'));
+	        };
+	        
+	        // Image placeholder
+	        const img = document.createElement('img');
+	        img.style.width = '100%';
+	        img.style.height = '120px';
+	        img.style.objectFit = 'cover';
+	        img.style.borderRadius = '4px';
+	        img.style.marginBottom = '8px';
+	        // Use specific images for each location
+	        if (d.id === 'london') {
+	          img.src = 'images/broadgate.png';
+	        } else if (d.id === 'dubai') {
+	          img.src = 'images/dubai1.png';
+	        } else if (d.id === 'morocco') {
+	          img.src = 'images/morocoo1.png';
+	        } else {
+	          img.src = 'images/building1.jpg';
+	        }
+	        
+	        // Text content
+	        const text = document.createElement('div');
+	        text.style.marginTop = '8px';
+	        text.style.fontSize = '14px';
+	        text.style.color = '#333';
+	        text.style.lineHeight = '1.4';
+	        text.innerHTML = `<strong>${d.name}</strong><br>Coordinates: ${d.lat.toFixed(2)}, ${d.lng.toFixed(2)}<br><small style="color:#666;">Project details placeholder</small>`;
+	        
+	        popup.appendChild(closeBtn);
+	        popup.appendChild(img);
+	        popup.appendChild(text);
+	        container.appendChild(marker);
+	        container.appendChild(popup);
+	        
+	        return container;
+	      }}
+	    />;
+	  };
+
+	  const root = createRoot(document.getElementById('globeViz'));
+	  root.render(<World />);
+	  
+	  // Hide spinner after a delay to allow globe to render
+	  setTimeout(() => {
+	    const spinner = document.getElementById('globeSpinner');
+	    if (spinner) {
+	      spinner.classList.add('hidden');
+	    }
+	  }, 3000);
 	</script>
-<script src="//unpkg.com/@babel/standalone"></script>
-<script type="text/jsx" data-type="module">
-  import Globe from 'https://esm.sh/react-globe.gl?external=react';
-  import React, { useState, useEffect } from 'react';
-  import { createRoot } from 'react-dom';
-  import { MeshLambertMaterial, DoubleSide } from 'https://esm.sh/three';
-  import * as topojson from 'https://esm.sh/topojson-client';
-
-  const polygonsMaterial = new MeshLambertMaterial({ color: 'darkslategrey', side: DoubleSide });
-
-  const cityMarkers = [
-    { id: 'morocco', name: 'Morocco', lat: 31.6300, lng: -8.0089 },
-    { id: 'london', name: 'London', lat: 51.5074, lng: -0.1278 },
-    { id: 'dubai', name: 'Dubai', lat: 25.2048, lng: 55.2708 }
-  ];
-
-  const World = () => {
-    const [landPolygons, setLandPolygons] = useState([]);
-    const [selectedCity, setSelectedCity] = useState(null);
-
-    useEffect(() => {
-      // load data
-      fetch('//unpkg.com/world-atlas/land-110m.json').then(res => res.json())
-        .then(landTopo => {
-          setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
-        });
-    }, []);
-
-    // Add menu click handlers
-    useEffect(() => {
-      const menuItems = document.querySelectorAll('#globeMenu a');
-      menuItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          const cityId = item.dataset.target;
-          setSelectedCity(cityId);
-          
-          // Update menu active state
-          menuItems.forEach(mi => mi.classList.remove('active'));
-          item.classList.add('active');
-        });
-      });
-    }, []);
-
-    return <Globe
-      backgroundColor="rgba(0,0,0,0)"
-      showGlobe={false}
-      showAtmosphere={false}
-      polygonsData={landPolygons}
-      polygonCapMaterial={polygonsMaterial}
-      polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
-      htmlElementsData={cityMarkers}
-      htmlAltitude={() => 0.02}
-      htmlElement={(d) => {
-        const container = document.createElement('div');
-        container.style.position = 'relative';
-        container.style.display = 'inline-block';
-        
-        const marker = document.createElement('div');
-        marker.style.width = selectedCity === d.id ? '20px' : '12px';
-        marker.style.height = selectedCity === d.id ? '20px' : '12px';
-        marker.style.borderRadius = '50%';
-        marker.style.backgroundColor = selectedCity === d.id ? '#ff0000' : '#000';
-        marker.style.border = '2px solid #fff';
-        marker.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
-        marker.style.pointerEvents = 'auto';
-        marker.style.transition = 'all 0.3s ease';
-        marker.style.cursor = 'pointer';
-        marker.title = `${d.name} (${d.lat.toFixed(2)}, ${d.lng.toFixed(2)})`;
-        
-        // Popup window
-        const popup = document.createElement('div');
-        popup.style.position = 'absolute';
-        popup.style.bottom = '30px';
-        popup.style.left = '50%';
-        popup.style.transform = 'translateX(-50%)';
-        popup.style.width = '200px';
-        popup.style.backgroundColor = '#fff';
-        popup.style.border = '1px solid #eaeaea';
-        popup.style.borderRadius = '8px';
-        popup.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
-        popup.style.padding = '12px';
-        popup.style.display = selectedCity === d.id ? 'block' : 'none';
-        popup.style.transition = 'all 0.3s ease';
-        popup.style.zIndex = '9999';
-        
-        // Close button
-        const closeBtn = document.createElement('button');
-        closeBtn.innerHTML = '×';
-        closeBtn.style.position = 'absolute';
-        closeBtn.style.top = '8px';
-        closeBtn.style.right = '8px';
-        closeBtn.style.width = '20px';
-        closeBtn.style.height = '20px';
-        closeBtn.style.border = 'none';
-        closeBtn.style.borderRadius = '50%';
-        closeBtn.style.backgroundColor = '#f5f5f5';
-        closeBtn.style.color = '#666';
-        closeBtn.style.fontSize = '14px';
-        closeBtn.style.fontWeight = 'bold';
-        closeBtn.style.cursor = 'pointer';
-        closeBtn.style.display = 'flex';
-        closeBtn.style.alignItems = 'center';
-        closeBtn.style.justifyContent = 'center';
-        closeBtn.style.transition = 'all 0.2s ease';
-        closeBtn.onmouseover = () => {
-          closeBtn.style.backgroundColor = '#e0e0e0';
-          closeBtn.style.color = '#333';
-        };
-        closeBtn.onmouseout = () => {
-          closeBtn.style.backgroundColor = '#f5f5f5';
-          closeBtn.style.color = '#666';
-        };
-        closeBtn.onclick = (e) => {
-          e.stopPropagation();
-          setSelectedCity(null);
-          const menuItems = document.querySelectorAll('#globeMenu a');
-          menuItems.forEach(mi => mi.classList.remove('active'));
-        };
-        
-        // Image placeholder
-        const img = document.createElement('div');
-        img.style.width = '100%';
-        img.style.height = '120px';
-        img.style.backgroundColor = '#f5f5f5';
-        img.style.borderRadius = '4px';
-        img.style.display = 'flex';
-        img.style.alignItems = 'center';
-        img.style.justifyContent = 'center';
-        img.style.color = '#999';
-        img.style.fontSize = '12px';
-        img.style.textTransform = 'uppercase';
-        img.style.letterSpacing = '0.5px';
-        img.textContent = 'Image Placeholder';
-        
-        // Text content
-        const text = document.createElement('div');
-        text.style.marginTop = '8px';
-        text.style.fontSize = '14px';
-        text.style.color = '#333';
-        text.style.lineHeight = '1.4';
-        text.innerHTML = `<strong>${d.name}</strong><br>Coordinates: ${d.lat.toFixed(2)}, ${d.lng.toFixed(2)}<br><small style="color:#666;">Project details placeholder</small>`;
-        
-        popup.appendChild(closeBtn);
-        popup.appendChild(img);
-        popup.appendChild(text);
-        container.appendChild(marker);
-        container.appendChild(popup);
-        
-        return container;
-      }}
-    />;
-  };
-
-  createRoot(document.getElementById('globeViz'))
-    .render(<World />);
-</script>
 </body>
 </html>
-
-
