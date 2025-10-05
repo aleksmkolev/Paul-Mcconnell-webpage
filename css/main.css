@@ -9,6 +9,28 @@ body {
 	color: #111111; 
 	font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; 
 	line-height: 1.6; 
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Performance optimizations */
+* {
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll */
+body {
+	overflow-x: hidden;
 }
 
 /* Layout */
@@ -513,47 +535,394 @@ footer {
 	text-decoration: none; 
 }
 
-/* Responsive */
-@media (max-width: 920px) {
-	.sidebar { 
-		position: static; 
-		width: auto; 
-		height: auto; 
-		border-right: none; 
-		border-bottom: 1px solid #eaeaea; 
+/* Mobile Navigation */
+.mobile-menu-toggle {
+	display: none;
+	background: none;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+	color: #111;
+	padding: 8px;
+	margin-right: 16px;
+}
+
+.mobile-nav {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.98);
+	backdrop-filter: blur(10px);
+	z-index: 1000;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.mobile-nav .nav {
+	flex-direction: column;
+	gap: 32px;
+	text-align: center;
+}
+
+.mobile-nav .nav a {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.mobile-nav-close {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	background: none;
+	border: none;
+	font-size: 32px;
+	cursor: pointer;
+	color: #111;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+	/* Tablet optimizations */
+	.sidebar {
+		width: 200px;
+		padding: 24px 20px;
 	}
 	
-	.topnav { 
-		left: 0; 
+	.content {
+		margin-left: 200px;
+		width: calc(100% - 200px);
 	}
 	
-	.content { 
-		margin-left: 0; 
+	.topnav {
+		left: 200px;
+		padding: 0 24px;
 	}
 	
-	.grid { 
-		grid-template-columns: 1fr; 
+	section {
+		padding: 64px 40px;
+	}
+	
+	.hero-content {
+		max-width: 70%;
+	}
+	
+	.globe-viz {
+		height: 450px;
+	}
+	
+	.contact-grid {
+		gap: 48px;
+	}
+}
+
+@media (max-width: 768px) {
+	/* Mobile optimizations */
+	.sidebar {
+		position: static;
+		width: 100%;
+		height: auto;
+		border-right: none;
+		border-bottom: 1px solid #eaeaea;
+		padding: 20px 24px;
+		text-align: center;
+	}
+	
+	.topnav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 60px;
+		padding: 0 20px;
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(234, 234, 234, 0.8);
+		z-index: 100;
+	}
+	
+	.mobile-menu-toggle {
+		display: block;
+	}
+	
+	.topnav .nav {
+		display: none;
+	}
+	
+	.content {
+		margin-left: 0;
+		width: 100%;
+		padding-top: 60px;
+	}
+	
+	section {
+		padding: 40px 20px;
+	}
+	
+	.hero {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		background-size: cover;
+		background-position: center;
+	}
+	
+	.hero-content {
+		max-width: 100%;
+	}
+	
+	.hero h1 {
+		font-size: 32px;
+		margin-bottom: 20px;
+	}
+	
+	.hero .synopsis {
+		font-size: 15px;
+		line-height: 1.7;
+	}
+	
+	.grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
 	}
 	
 	.col-7, 
-	.col-5 { 
-		grid-column: auto; 
+	.col-5 {
+		grid-column: auto;
 	}
 	
-	.globe-wrap { 
-		flex-direction: column; 
+	.globe-wrap {
+		flex-direction: column;
+		gap: 20px;
 	}
 	
-	.globe-side { 
-		width: auto; 
+	.globe-viz {
+		flex: none;
+		height: 300px;
+		width: 100%;
 	}
 	
-	.item { 
-		grid-template-columns: 1fr; 
+	.globe-side {
+		width: 100%;
+		flex: none;
 	}
 	
-	.contact-grid { 
-		grid-template-columns: 1fr; 
-		gap: 32px; 
+	.globe-menu a {
+		padding: 16px 0;
+		font-size: 14px;
+	}
+	
+	.item {
+		grid-template-columns: 1fr;
+		gap: 16px;
+		padding: 20px 0;
+	}
+	
+	.item .when {
+		font-size: 13px;
+		margin-bottom: 8px;
+	}
+	
+	.contact-grid {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+	
+	.contact-form {
+		padding: 24px;
+	}
+	
+	.form-group input,
+	.form-group textarea {
+		font-size: 16px; /* Prevents zoom on iOS */
+		padding: 14px 16px;
+	}
+	
+	.submit-btn,
+	.book-call-btn {
+		padding: 14px 28px;
+		font-size: 16px;
+		width: 100%;
+		margin-top: 16px;
+	}
+	
+	footer {
+		padding: 32px 20px;
+		text-align: center;
+	}
+	
+	.brand-image {
+		width: 100%;
+		height: 200px;
+		margin: 16px 0 0 0;
+		object-fit: cover;
+	}
+}
+
+@media (max-width: 480px) {
+	/* Small mobile optimizations */
+	section {
+		padding: 32px 16px;
+	}
+	
+	.hero h1 {
+		font-size: 28px;
+	}
+	
+	.hero .synopsis {
+		font-size: 14px;
+	}
+	
+	.globe-viz {
+		height: 250px;
+	}
+	
+	.contact-form {
+		padding: 20px;
+	}
+	
+	.mobile-nav .nav a {
+		font-size: 16px;
+	}
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+	.nav a,
+	.globe-menu a,
+	.submit-btn,
+	.book-call-btn {
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.globe-menu a {
+		padding: 20px 0;
+	}
+	
+	/* Improve touch targets */
+	.mobile-menu-toggle {
+		min-width: 44px;
+		min-height: 44px;
+	}
+	
+	.mobile-nav-close {
+		min-width: 44px;
+		min-height: 44px;
+	}
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+	.hero {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	
+	.hero h1 {
+		font-size: 28px;
+		margin-bottom: 16px;
+	}
+	
+	.globe-viz {
+		height: 200px;
+	}
+	
+	section {
+		padding: 24px 20px;
+	}
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 768px) {
+	/* Improve text readability */
+	p, li, .synopsis {
+		font-size: 15px;
+		line-height: 1.7;
+	}
+	
+	/* Better spacing for mobile */
+	h1, h2, h3 {
+		margin-bottom: 16px;
+	}
+	
+	/* Optimize list items */
+	ul, ol {
+		padding-left: 20px;
+	}
+	
+	li {
+		margin-bottom: 8px;
+	}
+	
+	/* Improve button accessibility */
+	button, .submit-btn, .book-call-btn {
+		min-height: 48px;
+		font-size: 16px;
+		font-weight: 500;
+	}
+	
+	/* Better form styling */
+	.form-group {
+		margin-bottom: 20px;
+	}
+	
+	.form-group label {
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 6px;
+	}
+	
+	/* Improve focus states for accessibility */
+	input:focus,
+	textarea:focus,
+	button:focus {
+		outline: 2px solid #1a73e8;
+		outline-offset: 2px;
+	}
+	
+	/* Better link styling */
+	a {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
+	}
+	
+	a:hover {
+		text-decoration-thickness: 2px;
+	}
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.hero {
+		background-image: url('../images/london1.jpeg');
+		background-size: cover;
+	}
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+	
+	html {
+		scroll-behavior: auto;
 	}
 }

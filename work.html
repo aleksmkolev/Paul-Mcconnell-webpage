@@ -19,6 +19,7 @@
 			<div class="brand">Paul McConnell<small>CEO • Consultant</small></div>
 		</aside>
 		<header class="topnav">
+			<button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
 			<nav class="nav">
 				<a href="index.html#about">About</a>
 				<a href="work.html">Work</a>
@@ -26,6 +27,15 @@
 				<a href="Paul McConnell Portfolio 1-9-2025 3.pdf" target="_blank">RESUMÉ</a>
 			</nav>
 		</header>
+		<div class="mobile-nav" id="mobileNav">
+			<button class="mobile-nav-close" id="mobileNavClose">×</button>
+			<nav class="nav">
+				<a href="index.html#about">About</a>
+				<a href="work.html">Work</a>
+				<a href="contact.html">Contact</a>
+				<a href="Paul McConnell Portfolio 1-9-2025 3.pdf" target="_blank">RESUMÉ</a>
+			</nav>
+		</div>
 		<main class="content">
 			<section class="work-hero">
 				<h1>Work Experience</h1>
@@ -102,6 +112,7 @@
 	  const World = () => {
 	    const [landPolygons, setLandPolygons] = useState([]);
 	    const [selectedCity, setSelectedCity] = useState(null);
+	    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
 	    useEffect(() => {
 	      // load data
@@ -109,6 +120,14 @@
 	        .then(landTopo => {
 	          setLandPolygons(topojson.feature(landTopo, landTopo.objects.land).features);
 	        });
+	      
+	      // Handle resize for mobile detection
+	      const handleResize = () => {
+	        setIsMobile(window.innerWidth <= 768);
+	      };
+	      
+	      window.addEventListener('resize', handleResize);
+	      return () => window.removeEventListener('resize', handleResize);
 	    }, []);
 
 	    // Add menu click handlers
@@ -136,6 +155,8 @@
 	      polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
 	      htmlElementsData={cityMarkers}
 	      htmlAltitude={() => 0.02}
+	      enablePointerInteraction={!isMobile}
+	      enableZoom={!isMobile}
 	      htmlElement={(d) => {
 	        const container = document.createElement('div');
 	        container.style.position = 'relative';
@@ -156,15 +177,16 @@
 	        // Popup window
 	        const popup = document.createElement('div');
 	        popup.style.position = 'absolute';
-	        popup.style.bottom = '30px';
+	        popup.style.bottom = isMobile ? '20px' : '30px';
 	        popup.style.left = '50%';
 	        popup.style.transform = 'translateX(-50%)';
-	        popup.style.width = '200px';
+	        popup.style.width = isMobile ? '280px' : '200px';
+	        popup.style.maxWidth = '90vw';
 	        popup.style.backgroundColor = '#fff';
 	        popup.style.border = '1px solid #eaeaea';
 	        popup.style.borderRadius = '8px';
 	        popup.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
-	        popup.style.padding = '12px';
+	        popup.style.padding = isMobile ? '16px' : '12px';
 	        popup.style.display = selectedCity === d.id ? 'block' : 'none';
 	        popup.style.transition = 'all 0.3s ease';
 	        popup.style.zIndex = '9999';
@@ -173,15 +195,15 @@
 	        const closeBtn = document.createElement('button');
 	        closeBtn.innerHTML = '×';
 	        closeBtn.style.position = 'absolute';
-	        closeBtn.style.top = '8px';
-	        closeBtn.style.right = '8px';
-	        closeBtn.style.width = '20px';
-	        closeBtn.style.height = '20px';
+	        closeBtn.style.top = isMobile ? '12px' : '8px';
+	        closeBtn.style.right = isMobile ? '12px' : '8px';
+	        closeBtn.style.width = isMobile ? '32px' : '20px';
+	        closeBtn.style.height = isMobile ? '32px' : '20px';
 	        closeBtn.style.border = 'none';
 	        closeBtn.style.borderRadius = '50%';
 	        closeBtn.style.backgroundColor = '#f5f5f5';
 	        closeBtn.style.color = '#666';
-	        closeBtn.style.fontSize = '14px';
+	        closeBtn.style.fontSize = isMobile ? '18px' : '14px';
 	        closeBtn.style.fontWeight = 'bold';
 	        closeBtn.style.cursor = 'pointer';
 	        closeBtn.style.display = 'flex';
@@ -207,10 +229,10 @@
 	        // Image placeholder
 	        const img = document.createElement('img');
 	        img.style.width = '100%';
-	        img.style.height = '120px';
+	        img.style.height = isMobile ? '140px' : '120px';
 	        img.style.objectFit = 'cover';
 	        img.style.borderRadius = '4px';
-	        img.style.marginBottom = '8px';
+	        img.style.marginBottom = isMobile ? '12px' : '8px';
 	        // Use specific images for each location
 	        if (d.id === 'london') {
 	          img.src = 'images/broadgate.png';
@@ -224,8 +246,8 @@
 	        
 	        // Text content
 	        const text = document.createElement('div');
-	        text.style.marginTop = '8px';
-	        text.style.fontSize = '14px';
+	        text.style.marginTop = isMobile ? '12px' : '8px';
+	        text.style.fontSize = isMobile ? '15px' : '14px';
 	        text.style.color = '#333';
 	        text.style.lineHeight = '1.4';
 	        text.innerHTML = `<strong>${d.name}</strong><br>Coordinates: ${d.lat.toFixed(2)}, ${d.lng.toFixed(2)}<br><small style="color:#666;">Project details placeholder</small>`;
